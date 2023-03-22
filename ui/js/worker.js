@@ -6,7 +6,9 @@ user = JSON.parse(user);
 $("#profile-name").text(user.name);
 
 async function renderWorkerDashboard() {
-  const resp = await fetch("http://localhost:4000/api/tasks?userid=" + user.id);
+  const resp = await fetch(
+    "http://192.168.100.2:4000/api/tasks?userid=" + user.id
+  );
   const tasks = await resp.json();
 
   let rows = "";
@@ -51,7 +53,7 @@ $("#update-task-form").submit(async (e) => {
     status: formData[1][1],
   };
   const resp = await fetch(
-    "http://localhost:4000/api/tasks/" + formData[0][1],
+    "http://192.168.100.2:4000/api/tasks/" + formData[0][1],
     {
       method: "PATCH",
       body: JSON.stringify(data),
