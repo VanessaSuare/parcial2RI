@@ -24,7 +24,9 @@ $("#login-form").submit(async (e) => {
       $("#login-alert").fadeIn().delay(2000).fadeOut();
     } else {
       localStorage.setItem("user", JSON.stringify(data.user));
-      window.location.href = "index.html";
+      const redirectPage =
+        data.user.role === "BOSS" ? "index.html" : "worker.html";
+      window.location.href = redirectPage;
     }
   }
 });

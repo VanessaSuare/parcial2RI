@@ -63,9 +63,9 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="notifications.html">
+                <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Notificaciones</span></a>
+                    <span>Tables</span></a>
             </li>
 
             <!-- Divider -->
@@ -125,24 +125,23 @@
 
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Panel de Control</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Usuarios</h1>
                     <div id="dashboard-boss" class="container">
 
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="card shadow mb-4">
                                     <div class="card-header">
-                                        <h6 class="m-0 font-weight-bold text-primary">Tareas</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Usuarios</h6>
                                     </div>
                                     <div class="card-body">
-                                        <table class="table table-bordered" id="tasks-table">
+                                        <table class="table table-bordered" id="users-table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">Descripción</th>
-                                                    <th scope="col">Prioridad</th>
-                                                    <th scope="col">Estado</th>
-                                                    <th scope="col">Trabajador</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Correo Electrónico</th>
+                                                    <th scope="col">Rol</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -156,37 +155,40 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="card shadow mb-4">
-                                    <div class="alert alert-success" id="task-alert" role="alert">
-                                        Tarea creada exitosamente
+                                    <div class="alert alert-success" id="user-alert" role="alert">
+                                        Usuario creado exitosamente
                                     </div>
                                     <div class="card-header">
-                                        <h6 class="m-0 font-weight-bold text-primary">Crear Tarea</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Crear Usuario</h6>
                                     </div>
                                     <div class="card-body">
-                                        <form id="create-task-form">
+                                        <form id="create-user-form">
                                             <div class="form-group row">
-                                                <label for="userId" class="col-sm-2 col-form-label">Usuario</label>
+                                                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                                                 <div class="col-sm-10">
-                                                    <select class="custom-select" name="userId" id="user-select">
-                                                    </select>
+                                                    <input type="text" class="form-control" id="name" name="name">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="priority" class="col-sm-2 col-form-label">Prioridad</label>
+                                                <label for="email" class="col-sm-2 col-form-label">Correo</label>
                                                 <div class="col-sm-10">
-                                                    <select class="custom-select" name="priority">
-                                                        <option value="LOW">Baja</option>
-                                                        <option value="MEDIUM">Media</option>
-                                                        <option value="HIGH">Alta</option>
-                                                    </select>
+                                                    <input type="email" class="form-control" id="email" name="email">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label for="description"
-                                                    class="col-sm-2 col-form-label">Descripción</label>
+                                                <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="description"
-                                                        name="description">
+                                                    <input type="password" class="form-control" id="password"
+                                                        name="password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="role" class="col-sm-2 col-form-label">Rol</label>
+                                                <div class="col-sm-10">
+                                                    <select class="custom-select" name="role">
+                                                        <option value="BOSS">Jefe</option>
+                                                        <option value="WORKER">Trabajador</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -258,7 +260,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/users.js"></script>
 
 </body>
 
