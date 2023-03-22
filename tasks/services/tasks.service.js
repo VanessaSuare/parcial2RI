@@ -1,17 +1,25 @@
 const { models } = require('../libs/sequelize');
 const axios = require('axios');
-const { where } = require('sequelize');
 
 const USERS_SERVICE_URL = 'http://localhost:3000/api/users';
 const NOTIFICATIONS_SERVICE_URL = 'http://localhost:5000/api/notifications';
 class TasksService {
   constructor() {}
 
-  findAll(userId) {
+  async findAll(userId) {
     if (userId) {
       return models.Task.findAll({ where: { userId } });
     } else {
-      return models.Task.findAll();
+      const tasks = await models.Task.findAll();
+      return Promise.all(
+        tasks.map(async (task) => {
+          const { data: user } = await axios.get(
+            `${USERS_SERVICE_URL}/${task.userId}`
+          );
+          task.dataValues.user = user;
+          return task;
+        })
+      );
     }
   }
 
