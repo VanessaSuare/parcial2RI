@@ -11,8 +11,19 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res, next) => {
   try {
     const body = req.body;
-    const newTask = await service.create(body);
+    const { userid } = req.query;
+    const newTask = await service.create(body, userid);
     res.status(newTask ? 201 : 401).json(newTask);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.post('/idbatch', async (req, res, next) => {
+  try {
+    const { ids } = req.body;
+    const tasks = await service.findManyByIds(ids);
+    res.status(tasks ? 200 : 404).json(tasks);
   } catch (error) {
     next(error);
   }
