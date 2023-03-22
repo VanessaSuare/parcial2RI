@@ -12,7 +12,6 @@ module.exports = {
         role: 'BOSS',
         password: 'password',
         name: 'The Boss',
-        create_at: new Date(),
       },
     ]);
   },

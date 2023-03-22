@@ -11,9 +11,10 @@ class UsersService {
   async create(userDTO) {
     const reqUser = await this.findById(userDTO.requestUser);
     if (reqUser.role === 'BOSS') {
+      const { requestUser, ...insertData } = userDTO;
       return models.User.findOrCreate({
         where: { email: userDTO.email },
-        defaults: userDTO,
+        defaults: insertData,
       });
     } else {
       return false;
