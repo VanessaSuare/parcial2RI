@@ -27,12 +27,6 @@ const UserSchema = {
     type: DataTypes.ENUM('BOSS', 'WORKER'),
     defaultValue: 'WORKER',
   },
-  createdAt: {
-    allowNull: false,
-    type: DataTypes.DATE,
-    field: 'create_at',
-    defaultValue: Sequelize.NOW,
-  },
 };
 
 class User extends Model {
