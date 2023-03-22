@@ -14,11 +14,7 @@ router.post('/', async (req, res, next) => {
 });
 
 router.get('/', async (req, res) => {
-  const { userid } = req.query;
-  if (!userid) {
-    res.status(400).json({ error: 'Please provide userid query param' });
-  }
-  const notifications = await service.findAll(userid);
+  const notifications = await service.findAll();
   res.json(notifications);
 });
 
