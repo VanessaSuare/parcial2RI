@@ -4,7 +4,8 @@ const router = express.Router();
 const service = new UserService();
 
 router.get('/', async (req, res) => {
-  res.json(await service.findAll());
+  const { role } = req.query;
+  res.json(await service.findAll(role));
 });
 
 router.post('/', async (req, res, next) => {
@@ -27,7 +28,7 @@ router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const resp = await service.validate(username, password);
   const logged = resp !== null;
-  res.json({ logged, ...(logged && { userId: resp.id }) });
+  res.json({ logged, ...(logged && { user: resp }) });
 });
 
 module.exports = router;

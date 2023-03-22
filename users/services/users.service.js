@@ -1,10 +1,11 @@
+const { where } = require('sequelize');
 const { models } = require('../libs/sequelize');
 
 class UsersService {
   constructor() {}
 
-  findAll() {
-    return models.User.findAll();
+  findAll(role) {
+    return models.User.findAll({ where: { role: role } });
   }
 
   async create(userDTO) {
