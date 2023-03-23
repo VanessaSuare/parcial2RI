@@ -10,6 +10,7 @@ class UsersService {
   }
 
   async create(userDTO) {
+    // Validación creacion  del usuario
     const reqUser = await this.findById(userDTO.requestUser);
     if (reqUser.role === 'BOSS') {
       const { requestUser, ...insertData } = userDTO;
@@ -28,13 +29,14 @@ class UsersService {
   }
 
   async update(id, changes) {
-    //Crear usuario
+    //actualizar usuario
     const user = await this.findById(id);
     const rta = await user.update(changes);
     return rta;
   }
 
   async delete(id) {
+    //Eliminar usuario por su id
     const user = await this.findById(id);
     await user.destroy();
     return { id };

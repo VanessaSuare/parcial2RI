@@ -10,7 +10,6 @@ class NotificationsService {
     //Traer todas las notificaciones
     let notifications = await models.Notification.findAll(); // Obtener todos los taskIDs de cada notificacion
     const taskIds = notifications.map((notification) => notification.taskId); // [1,2,3,4,7]
-
     //Consultar las tareas por el arreglo de tasksIDs
     const { data: tasks } = await axios.post(`${TASKS_SERVICE_URL}/idbatch`, {
       ids: taskIds, //Devuelve un arreglo de tareas
@@ -37,6 +36,7 @@ class NotificationsService {
       })
     );
   }
+
   //Crear notificación
   async create(notificationDTO) {
     //retorna la notificacion con el modelo
