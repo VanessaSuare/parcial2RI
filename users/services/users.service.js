@@ -5,6 +5,7 @@ class UsersService {
   constructor() {}
 
   findAll(role) {
+    // Validación del rol del usuario
     return models.User.findAll({ where: { role: role } });
   }
 
@@ -22,10 +23,12 @@ class UsersService {
   }
 
   findById(id) {
+    //Encontrar usuario por su id
     return models.User.findByPk(id);
   }
 
   async update(id, changes) {
+    //Crear usuario
     const user = await this.findById(id);
     const rta = await user.update(changes);
     return rta;
