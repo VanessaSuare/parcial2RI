@@ -7,7 +7,7 @@ $("#profile-name").text(user.name);
 
 async function renderNotifications() {
   const notifications = await fetch(
-    "http://192.168.100.2:5000/api/notifications"
+    "http://tasksmanager:5000/api/notifications"
   ).then((resp) => resp.json());
   let rows = "";
   notifications.forEach((notification, index) => {
