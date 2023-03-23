@@ -7,7 +7,7 @@ $("#profile-name").text(user.name);
 
 async function renderUsersTable() {
   const users = await fetch(
-    "http://tasksmanager:3000/api/users?role=BOSS&role=WORKER"
+    "http://192.168.100.2:3000/api/users?role=BOSS&role=WORKER"
   ).then((data) => data.json());
 
   let rows = "";
