@@ -1,8 +1,8 @@
 const { models } = require('../libs/sequelize');
 const axios = require('axios');
 
-const USERS_SERVICE_URL = 'http://tasksmanager:3000/api/users';
-const NOTIFICATIONS_SERVICE_URL = 'http://tasksmanager:5000/api/notifications';
+const USERS_SERVICE_URL = 'http://192.168.100.2:3000/api/users';
+const NOTIFICATIONS_SERVICE_URL = 'http://192.168.100.2:5000/api/notifications';
 class TasksService {
   constructor() {}
 
