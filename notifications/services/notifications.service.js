@@ -20,22 +20,26 @@ class NotificationsService {
       //Recorrer las notificaciones
       notifications.map(async (notification) => {
         //Buscar tarea asociada a la notificacion
-        const task = tasks.find((task) => notification.taskId === task.id); //Agregar desripcion de tarea a la notificacion
+        const task = tasks.find((task) => notification.taskId === task.id);
+        //Agregar desripcion de tarea a la notificacion
         notification.dataValues.task = task.description;
 
         //Consultar usuario por id a servicio de usuarios
         const { data: user } = await axios.get(
-          USERS_SERVICE_URL + '/' + notification.userId // Devuelve un usuario por su id
+          // Devuelve un usuario por su id
+          USERS_SERVICE_URL + '/' + notification.userId
         );
 
-        notification.dataValues.user = user.name; //Agregar nombre de usuario a notificacion
+        //Agregar nombre de usuario a notificacion
+        notification.dataValues.user = user.name;
 
         return notification;
       })
     );
   }
-
+  //Crear notificación
   async create(notificationDTO) {
+    //retorna la notificacion con el modelo
     return models.Notification.create(notificationDTO);
   }
 }
