@@ -5,7 +5,7 @@ $("#login-form").submit(async (e) => {
   e.preventDefault();
   const formData = new FormData(e.target);
   const formDataEntries = [...formData.entries()];
-  const resp = await fetch("http://tasksmanager.com:3000/api/users/login", {
+  const resp = await fetch("http://192.168.100.2:3000/api/users/login", {
     method: "POST",
     body: JSON.stringify({
       username: formDataEntries[0][1],

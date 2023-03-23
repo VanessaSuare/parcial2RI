@@ -7,7 +7,7 @@ $("#profile-name").text(user.name);
 
 async function renderUsersTable() {
   const users = await fetch(
-    "http://tasksmanager.com:3000/api/users?role=BOSS&role=WORKER"
+    "http://192.168.100.2:3000/api/users?role=BOSS&role=WORKER"
   ).then((data) => data.json());
 
   let rows = "";
@@ -43,7 +43,7 @@ $("#create-user-form").submit(async (e) => {
     requestUser: user.id,
   };
   console.log(user, data);
-  const resp = await fetch("http://tasksmanager.com:3000/api/users", {
+  const resp = await fetch("http://192.168.100.2:3000/api/users", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {

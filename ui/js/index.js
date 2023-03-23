@@ -13,7 +13,7 @@ if (user.role === "BOSS") {
 }
 
 async function renderBossDashboard() {
-  const resp = await fetch("http://tasksmanager.com:4000/api/tasks");
+  const resp = await fetch("http://192.168.100.2:4000/api/tasks");
   const tasks = await resp.json();
 
   let rows = "";
@@ -47,9 +47,7 @@ function getStatus(status) {
 }
 
 async function loadUsersForm() {
-  const resp = await fetch(
-    "http://tasksmanager.com:3000/api/users?role=WORKER"
-  );
+  const resp = await fetch("http://192.168.100.2:3000/api/users?role=WORKER");
   const users = await resp.json();
   let options = "";
   users.forEach((user) => {
@@ -72,7 +70,7 @@ $("#create-task-form").submit(async (e) => {
     description: formData[2][1],
   };
   const resp = await fetch(
-    "http://tasksmanager.com:4000/api/tasks?userid=" + user.id,
+    "http://192.168.100.2:4000/api/tasks?userid=" + user.id,
     {
       method: "post",
       body: JSON.stringify(data),
